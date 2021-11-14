@@ -1,0 +1,7 @@
+[
+  {
+    "schedule": "00 22 * * *",
+    "humanReadableSchedule": "Daily at 22:00",
+    "message": "Remember Myanmar ;)"
+  }
+]
