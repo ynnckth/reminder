@@ -7,8 +7,11 @@ require('dotenv').config();
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, {polling: true});
 const reminder = new Reminder(reminders, bot);
 
-bot.onText(/\/remindme/,async (msg) => {
+bot.onText(/\/remindme/, async (msg) => {
   const chatId = msg.chat.id;
-  reminder.registerChatId(chatId);
-  await bot.sendMessage(chatId, `OK, I'll start reminding you`);
+  const registered = reminder.registerChatId(chatId);
+  const replyMessage = registered
+    ? 'OK, I\'ll start reminding you'
+    : 'Skipped'
+  await bot.sendMessage(chatId, replyMessage);
 });

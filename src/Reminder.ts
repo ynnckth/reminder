@@ -10,10 +10,10 @@ class Reminder {
   constructor(private reminders: ReminderMessage[], private bot: TelegramBot) {
   }
 
-  registerChatId(chatId: number) {
-    if (this.chatIds.find((chatId) => chatId === chatId)) {
+  registerChatId(chatId: number): boolean {
+    if (this.chatIds.includes(chatId)) {
       console.log(`Chat id ${chatId} is already registered`);
-      return;
+      return false;
     }
     this.chatIds.push(chatId);
     console.log(`Registered chat id ${chatId}`);
@@ -24,6 +24,7 @@ class Reminder {
       }));
       console.log('Scheduled reminder for chat id', chatId);
     });
+    return true;
   }
 }
 export default Reminder;
