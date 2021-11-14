@@ -3,5 +3,10 @@
     "schedule": "00 22 * * *",
     "humanReadableSchedule": "Daily at 22:00",
     "message": "Remember Myanmar ;)"
+  },
+  {
+    "schedule": "* * * * *",
+    "humanReadableSchedule": "Every minute",
+    "message": "Test reminder every minute"
   }
 ]
