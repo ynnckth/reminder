@@ -1,8 +1,9 @@
 export interface ReminderMessage {
+  name: string;
 
   /**
    * Schedule in cron-style format
-     * *    *    *    *    *    *
+     *    *    *    *    *    *
      ┬    ┬    ┬    ┬    ┬    ┬
      │    │    │    │    │    │
      │    │    │    │    │    └ day of week (0 - 7) (0 or 7 is Sun)

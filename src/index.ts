@@ -1,0 +1,41 @@
+import TelegramBot from 'node-telegram-bot-api';
+import Reminder from './Reminder';
+import reminders from './reminders.json';
+import RemindmeagainBot from './RemindmeagainBot';
+import express from 'express';
+import * as http from 'http';
+
+require('dotenv').config();
+const fetch = require('node-fetch');
+const app = express();
+
+app.set('port', process.env.PORT || 5000);
+
+const telegramBot = new TelegramBot(process.env.TELEGRAM_TOKEN, {polling: true});
+const reminder = new Reminder(reminders, telegramBot);
+
+const reminderBot = new RemindmeagainBot(telegramBot, reminder);
+reminderBot.startListening();
+
+app.get('/', (request, response) => {
+  console.log('Called http endpoint /');
+  response.send(JSON.stringify(reminders));
+});
+
+app.all('*', (request, response) => {
+  console.log('Unknown endpoint, redirecting to /');
+  response.redirect('/');
+});
+
+const server = http.createServer(app);
+server.listen(app.get('port'), () => {
+  console.log(`Application is running on port ${app.get('port')}`);
+
+  const TWENTY_FIVE_MIN_IN_MS = 1500000;
+  setInterval(async () => {
+    const response = await fetch(process.env.BASE_URL);
+    const reminders = await response.json();
+    console.log('Fetched the following reminders ', JSON.stringify(reminders));
+  }, TWENTY_FIVE_MIN_IN_MS)
+});
+export default server;
