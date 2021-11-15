@@ -30,12 +30,5 @@ app.all('*', (request, response) => {
 const server = http.createServer(app);
 server.listen(app.get('port'), () => {
   console.log(`Application is running on port ${app.get('port')}`);
-
-  const TWENTY_FIVE_MIN_IN_MS = 1500000;
-  setInterval(async () => {
-    const response = await fetch(process.env.BASE_URL);
-    const reminders = await response.json();
-    console.log('Fetched the following reminders ', JSON.stringify(reminders));
-  }, TWENTY_FIVE_MIN_IN_MS)
 });
 export default server;
