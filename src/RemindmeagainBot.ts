@@ -7,6 +7,12 @@ class RemindmeagainBot {
   }
 
   startListening() {
+    // /help command
+    this.telegramBot.onText(/\/help/, async (msg) => {
+      const chatId = msg.chat.id;
+      await this.sendMessage(chatId, `📚 The following commands are available: \n \t •️ /remindme \t Start reminding me \n \t •️ /status \t Check registered reminders`);
+    });
+
     // /remindme command
     this.telegramBot.onText(/\/remindme/, async (msg) => {
       const chatId = msg.chat.id;

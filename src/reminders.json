@@ -1,14 +1,8 @@
 [
   {
-    "name": "Myanmar: daily at 22:00",
-    "schedule": "00 22 * * *",
-    "humanReadableSchedule": "Daily at 22:00",
+    "name": "Myanmar: daily at 10:00",
+    "schedule": "00 10 * * *",
+    "humanReadableSchedule": "Daily at 10:00",
     "message": "Remember Myanmar ;)"
-  },
-  {
-    "name": "Climbing: every Monday at 13:00",
-    "schedule": "00 13 * * 1",
-    "humanReadableSchedule": "Every Monday at 13:00",
-    "message": "Remember to book climbing!\n\nhttps://www.climbcentral.sg/"
   }
 ]

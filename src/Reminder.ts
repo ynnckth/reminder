@@ -4,10 +4,10 @@ import TelegramBot from 'node-telegram-bot-api';
 
 class Reminder {
 
-  private chatIds: number[] = [];
-  private scheduledJobs: Job[] = [];
+  private readonly chatIds: number[] = [];
+  private readonly scheduledJobs: Job[] = [];
 
-  constructor(private reminders: ReminderMessage[], private bot: TelegramBot) {
+  constructor(private readonly reminders: ReminderMessage[], private readonly bot: TelegramBot) {
   }
 
   registerChatId(chatId: number): boolean {
